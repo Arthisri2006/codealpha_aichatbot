@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="NexusAI – A smart rule-based chatbot powered by pattern matching and NLP techniques. Get instant answers to your questions." />
+  <title>NexusAI – Intelligent Rule-Based Chatbot</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Ambient Background -->
+  <div class="ambient-bg">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="grid-overlay"></div>
+  </div>
+
+  <!-- App Shell -->
+  <div class="app-shell" id="appShell">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="logo-wrap">
+          <div class="logo-icon">
+            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="20" cy="20" r="18" stroke="url(#grad)" stroke-width="2"/>
+              <circle cx="20" cy="20" r="8" fill="url(#grad2)" opacity="0.8"/>
+              <path d="M20 4 L20 10 M20 30 L20 36 M4 20 L10 20 M30 20 L36 20" stroke="url(#grad)" stroke-width="1.5" stroke-linecap="round"/>
+              <defs>
+                <linearGradient id="grad" x1="0" y1="0" x2="40" y2="40">
+                  <stop offset="0%" stop-color="#7c3aed"/>
+                  <stop offset="100%" stop-color="#06b6d4"/>
+                </linearGradient>
+                <linearGradient id="grad2" x1="0" y1="0" x2="40" y2="40">
+                  <stop offset="0%" stop-color="#7c3aed"/>
+                  <stop offset="100%" stop-color="#06b6d4"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <span class="logo-text">NexusAI</span>
+        </div>
+        <button class="sidebar-toggle-btn" id="sidebarToggle" title="Collapse sidebar" aria-label="Toggle sidebar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+      </div>
+
+      <div class="sidebar-section">
+        <p class="sidebar-label">Quick Topics</p>
+        <div class="quick-topics">
+          <button class="topic-btn" id="topic-greeting" data-msg="Hello there!">👋 Greetings</button>
+          <button class="topic-btn" id="topic-weather" data-msg="What's the weather like?">🌤️ Weather</button>
+          <button class="topic-btn" id="topic-math" data-msg="Can you help me with math?">🧮 Math Help</button>
+          <button class="topic-btn" id="topic-time" data-msg="What time is it?">🕐 Date & Time</button>
+          <button class="topic-btn" id="topic-joke" data-msg="Tell me a joke">😄 Jokes</button>
+          <button class="topic-btn" id="topic-fact" data-msg="Tell me a fun fact">🔬 Fun Facts</button>
+          <button class="topic-btn" id="topic-help" data-msg="What can you do?">❓ Help</button>
+          <button class="topic-btn" id="topic-mood" data-msg="How are you?">🤖 My Status</button>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <p class="sidebar-label">Capabilities</p>
+        <ul class="capability-list">
+          <li><span class="cap-icon">🧠</span> Pattern Matching</li>
+          <li><span class="cap-icon">💬</span> Contextual Replies</li>
+          <li><span class="cap-icon">🔢</span> Basic Math</li>
+          <li><span class="cap-icon">🌍</span> General Knowledge</li>
+          <li><span class="cap-icon">😄</span> Jokes & Fun Facts</li>
+          <li><span class="cap-icon">⏰</span> Date & Time</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="status-indicator">
+          <span class="status-dot"></span>
+          <span>NexusAI Online</span>
+        </div>
+        <p class="version-tag">v1.0 · Rule-Based Engine</p>
+      </div>
+    </aside>
+
+    <!-- Main Chat Area -->
+    <main class="chat-area">
+
+      <!-- Top Bar -->
+      <header class="topbar">
+        <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <div class="topbar-info">
+          <div class="bot-avatar-sm">
+            <div class="pulse-ring"></div>
+            <span>N</span>
+          </div>
+          <div>
+            <h1 class="topbar-title">NexusAI</h1>
+            <p class="topbar-sub" id="statusText">Thinking intelligently…</p>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <button class="action-btn" id="clearBtn" title="Clear chat" aria-label="Clear chat">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+          </button>
+          <button class="action-btn" id="themeBtn" title="Toggle theme" aria-label="Toggle theme">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="themeIcon"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- Messages Container -->
+      <div class="messages-container" id="messagesContainer" role="log" aria-live="polite" aria-label="Chat messages">
+
+        <!-- Welcome Card -->
+        <div class="welcome-card" id="welcomeCard">
+          <div class="welcome-avatar">
+            <div class="avatar-glow"></div>
+            <span class="avatar-letter">N</span>
+          </div>
+          <h2 class="welcome-title">Hello! I'm <span class="gradient-text">NexusAI</span></h2>
+          <p class="welcome-sub">Your intelligent rule-based assistant. I understand natural language patterns and respond with context-aware answers.</p>
+          <div class="welcome-chips">
+            <button class="chip" data-msg="Hello!">Say Hello 👋</button>
+            <button class="chip" data-msg="Tell me a joke">Crack a Joke 😂</button>
+            <button class="chip" data-msg="What can you do?">My Abilities 🚀</button>
+            <button class="chip" data-msg="Tell me a fun fact">Fun Fact 🔬</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Typing Indicator -->
+      <div class="typing-indicator" id="typingIndicator" style="display:none;" aria-hidden="true">
+        <div class="typing-avatar">N</div>
+        <div class="typing-bubbles">
+          <span></span><span></span><span></span>
+        </div>
+        <span class="typing-text">NexusAI is thinking…</span>
+      </div>
+
+      <!-- Input Area -->
+      <div class="input-area">
+        <div class="input-wrapper">
+          <textarea
+            id="userInput"
+            class="user-input"
+            placeholder="Ask me anything… greetings, jokes, math, facts!"
+            rows="1"
+            maxlength="500"
+            aria-label="Type your message"
+          ></textarea>
+          <div class="input-actions">
+            <span class="char-count" id="charCount">0/500</span>
+            <button class="send-btn" id="sendBtn" aria-label="Send message" disabled>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="22" y1="2" x2="11" y2="13"/>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <p class="input-hint">Press <kbd>Enter</kbd> to send · <kbd>Shift+Enter</kbd> for new line</p>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="chatbot.js"></script>
+</body>
+</html>
