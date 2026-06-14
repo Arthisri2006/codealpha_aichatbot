@@ -224,8 +224,8 @@ This project is licensed under the **MIT License** — free to use, modify, and 
 
 ## 👨‍💻 Author
 
-**Purna Sai**
-- 🐙 GitHub: [@purnasai2007](https://github.com/purnasai2007)
+**Arthisri**
+- 🐙 GitHub: [@Arthisri2007](https://github.com/Arthisri2007)
 
 ---
 
