@@ -238,5 +238,5 @@ This project is licensed under the **MIT License** — free to use, modify, and 
 
 <div align="center">
   <strong>⭐ Star this repo if you found it useful!</strong><br/>
-  Made with ❤️ and JavaScript
+  Made with ❤️ 
 </div>
